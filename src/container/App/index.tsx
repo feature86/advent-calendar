@@ -64,7 +64,11 @@ const App: React.FC = () => {
     async function fetchData() {
       const response = await fetch('/hatches.json');
       const jsonData = await response.json();
-      setHatches(((jsonData as any) as HatchObject).hatches);
+      const h = (((jsonData as any) as HatchObject).hatches);
+      h.sort((a,b) => {
+        return  ((a.day < b.day) ? -1 : ((a.day > b.day) ? 1 : 0));
+      });
+      setHatches(h);
     }
     fetchData();
   }, []);
