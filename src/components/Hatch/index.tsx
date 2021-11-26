@@ -80,7 +80,7 @@ export const Hatch: React.FC<HatchProps> = ({ hatch, toggleOpen }) => {
   const [playerRef, setPlayerRef] = useState<VideoJsPlayer | null>(null);
 
   const handleClick = (e: React.MouseEvent) => {
-    if (open) {
+    if (open || !url || !url.length) {
       return
     }
     e.stopPropagation();

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import GlobalStyle from '../../global-styles';
 import { Hatch } from '../../components/Hatch';
+import Scrollbars from 'react-custom-scrollbars';
 
 const AppContainer = styled.div`
  width: 100vw;
@@ -10,7 +11,7 @@ const AppContainer = styled.div`
  position: absolute;
 `;
 
-const ContainerWrap = styled.div`
+const ScrollWrap = styled.div`
     z-index: 1;
     position:absolute;
     left: 0;
@@ -18,13 +19,19 @@ const ContainerWrap = styled.div`
     right: 0;
     height: 80vh;
     min-width: 200px;
-    overflow: scroll;
+    overflow: hidden;
+    
+    
+`
+
+
+const ContainerWrap = styled.div`
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    justify-content: center;
-    
-`
+    justify-content: center;`;
+
+
 const Heading = styled.div`
     position:absolute;
     top: 0;
@@ -91,11 +98,13 @@ const App: React.FC = () => {
         <Heading>
           <H1>Adventkalender</H1>
         </Heading>
-        <ContainerWrap>
-          {hatches.map((h) =>
-            (<Hatch key={h.id} hatch={h} toggleOpen={toggleOpen} />)
-          )}
-        </ContainerWrap>
+        <ScrollWrap>
+          <Scrollbars style={{width: '100%', height: '100%'}}>
+          <ContainerWrap>
+          {hatches.map((h, index) => index < 24 ? <Hatch key={h.id} hatch={h} toggleOpen={toggleOpen} /> : '')}
+          </ContainerWrap>
+          </Scrollbars>
+          </ScrollWrap>
       </AppContainer >
 
       <GlobalStyle />
