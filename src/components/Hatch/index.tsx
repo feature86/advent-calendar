@@ -18,8 +18,9 @@ const HatchWrap = styled.div`
   margin: 20px;  
   cursor: pointer;
   user-select:none;
-  font-size: 2em;
+  font-size: 2.5em;
   position:relative;
+  
 `;
 
 const HatchCommon = styled.div`
@@ -30,18 +31,24 @@ const HatchCommon = styled.div`
   height:150px;
   transition: all 1s;
   transform-style: preserve-3d;
-  border: 2px solid #b55252;
+  border: 4px solid #fff;
   display: flex;
   align-items: center;
   justify-content: center;
 `;
 
 
+const Day = styled.span`
+  position: absolute;
+  bottom: 5px;
+  right: 15px;
+`;
 const HatchFront = styled(HatchCommon)`
   background-color: rgba(0,0,0,0.4);
   color: white;
   opacity: 1;
   z-index: 2;
+  position:absolute;
   &.open {
     transform: rotateY(180deg);
     opacity: 0;
@@ -134,7 +141,7 @@ export const Hatch: React.FC<HatchProps> = ({ hatch, toggleOpen }) => {
 
   return (
     <HatchWrap onClick={handleClick}>
-      <HatchFront className={open ? 'open' : ''}>{day} </HatchFront>
+      <HatchFront className={open ? 'open' : ''}><Day>{day}</Day> </HatchFront>
       <HatchBack className={open ? 'open' : ''}>
 
         <StyledVideo

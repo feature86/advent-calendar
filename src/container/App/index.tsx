@@ -16,7 +16,7 @@ const ContainerWrap = styled.div`
     left: 0;
     bottom: 3vh;
     right: 0;
-    height: 75vh;
+    height: 80vh;
     min-width: 200px;
     overflow: scroll;
     display: flex;
@@ -38,8 +38,8 @@ const Heading = styled.div`
 
 
 const H1 = styled.h1`
-  color: #ff0000;
-  font-size: clamp(3rem, 1.6765rem + 2.3529vw, 6rem);
+  color: #fff;
+  font-size: clamp(2rem, 1.4824rem + 4.4706vw, 6rem);
   text-shadow: 2px 2px 2px #000;
   user-select:none;
 `;
