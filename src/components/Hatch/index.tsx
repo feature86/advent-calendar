@@ -104,7 +104,6 @@ export const Hatch: React.FC<HatchProps> = ({ hatch, toggleOpen }) => {
   const onReady = (player: VideoJsPlayer) => {
     setPlayerRef(player);
     if (player) {
-      player.controls(false);
       player.on('fullscreenchange', onFull);
     }
   }
@@ -112,7 +111,6 @@ export const Hatch: React.FC<HatchProps> = ({ hatch, toggleOpen }) => {
   const onPlaying = () => {
     if (playerRef) {
       if (!playerRef.isFullscreen()) {
-        playerRef.controls(true);
         playerRef.requestFullscreen();
       }
     }
@@ -124,7 +122,6 @@ export const Hatch: React.FC<HatchProps> = ({ hatch, toggleOpen }) => {
         if (!playerRef.paused()) {
           playerRef.pause();
         }
-        playerRef.controls(false);
       }
     }
   }
